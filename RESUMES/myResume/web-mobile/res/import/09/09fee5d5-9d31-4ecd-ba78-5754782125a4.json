@@ -1,1 +1,21 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"fb_gongluel","texture":"8708fa2a-4a04-40f2-a044-dbe72e591ffc","rect":[5,5,100,57],"offset":[0,0.5],"originalSize":[110,68]}}
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "fb_gongluel",
+    "texture": "8708fa2a-4a04-40f2-a044-dbe72e591ffc",
+    "rect": [
+      5,
+      5,
+      100,
+      57
+    ],
+    "offset": [
+      0,
+      0.5
+    ],
+    "originalSize": [
+      110,
+      68
+    ]
+  }
+}
