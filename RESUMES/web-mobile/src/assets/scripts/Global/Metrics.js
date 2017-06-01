@@ -1,0 +1,1 @@
+"undefined"!=typeof cocosAnalytics&&cocosAnalytics.init({appID:"11036",appSecret:"4e46d7145f70314fa4c9f29a2019094b"});
