@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>（四）奖惩机制 · Blankj's Glory</title>
+        <title>（三）安装swoole · Blankj's Glory</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -56,7 +56,7 @@
 
     
     
-    <link rel="prev" href="CLIENT.html" />
+    <link rel="prev" href="database.html" />
     
 
     </head>
@@ -92,7 +92,7 @@
                 <a href="../">
             
                     
-                    规范介绍
+                    文档介绍
             
                 </a>
             
@@ -114,12 +114,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="DEMAND.html">
+        <li class="chapter " data-level="1.2.1" data-path="prepare.html">
             
-                <a href="DEMAND.html">
+                <a href="prepare.html">
             
                     
-                    （一）制定需求⽂文档
+                    （一）修改服务器内核配置
             
                 </a>
             
@@ -127,12 +127,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="SERVER.html">
+        <li class="chapter " data-level="1.2.2" data-path="database.html">
             
-                <a href="SERVER.html">
+                <a href="database.html">
             
                     
-                    （二）服务器端要求
+                    （二）装载数据库
             
                 </a>
             
@@ -140,25 +140,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="CLIENT.html">
+        <li class="chapter active" data-level="1.2.3" data-path="frame.html">
             
-                <a href="CLIENT.html">
-            
-                    
-                    （三）客户端要求
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.2.4" data-path="REWARD.html">
-            
-                <a href="REWARD.html">
+                <a href="frame.html">
             
                     
-                    （四）奖惩机制
+                    （三）安装swoole
             
                 </a>
             
@@ -201,7 +188,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >（四）奖惩机制</a>
+        <a href=".." >（三）安装swoole</a>
     </h1>
 </div>
 
@@ -216,9 +203,63 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5956;&#x60E9;&#x673A;&#x5236;">&#x5956;&#x60E9;&#x673A;&#x5236;</h1>
+                                <h1 id="&#x5B89;&#x88C5;swoole&#x73AF;&#x5883;">&#x5B89;&#x88C5;swoole&#x73AF;&#x5883;</h1>
 <hr>
-<p>&#x5956;&#x52B1;&#x6309;&#x7167;&#x9879;&#x76EE;&#x76C8;&#x5229;&#x767E;&#x5206;&#x6BD4;&#x5206;&#x53D1;;&#x5BF9;&#x672A;&#x6309;&#x7167;&#x4EE5;&#x4E0A;&#x89C4;&#x8303;&#x6267;&#xFA08;&#x8005;&#xFF0C;&#x8FDB;&#x2F8F;&#x7F5A;&#x6B3E;&#x60E9;&#x7F5A;&#xFF0C;&#x7F5A;&#x6B3E;&#xF90A;&#x989D; &#x53C2;&#x8003;&#x5404;&#x6761;&#x7ED3;&#x5C3E;&#x6807;&#x6CE8;&#x3002; &#x5956;&#x60E9;&#x5236;&#x5EA6;&#x662F;&#x4E3A;&#x4E86;&#x7EA6;&#x675F;&#x6211;&#x4EEC;&#x7684;&#x2F2F;&#x4F5C;&#x2F45;&#x5F0F;&#xFF0C;&#x4F7F;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x8D8B;&#x4E8E;&#x201C;&#x6807;&#x51C6;&#x5316;&#x201D;&#xFF0C;&#x7ED9;&#x516C;&#x53F8;&#x548C;&#x4E2A;&#x4EBA;&#x5E26;&#x6765;&#xF901;&#x591A;(&#x597D;)&#xF9DD;(&#x591A;)&#x76CA;(&#x94B1;)&#x3002;</p>
+<ul>
+<li><p>1&#x3001;python autoinstallswoole.py</p>
+<pre><code>  cd /home &amp;&amp;  chmod 777 autoinstallswoole1.sh &amp;&amp; chmod 777 autoinstallswoole2.sh
+   &amp;&amp; sh autoinstallswoole1.sh &amp;&amp; sh autoinstallswoole2.sh 
+  source ~/.bash_profile
+
+  php -m 
+  pecl channel-update pecl.php.net
+  pecl install mongodb
+</code></pre></li>
+<li>2&#x3001;&#x4E0A;&#x4F20;&#x6846;&#x67B6;<pre><code>  python uploadphp.py
+  cd /home/proj
+  unzip QYS.zip
+</code></pre></li>
+<li>3&#x3001;&#x66FF;&#x6362;beast.so&#x6587;&#x4EF6;<pre><code>  find / -name &quot;beast.so&quot;
+  /usr/local/php/lib/php/extensions/no-debug-non-zts-20170718 &#x66FF;&#x6362;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;beast.so&#x6587;&#x4EF6;
+</code></pre></li>
+<li>4&#x3001;&#x4E0A;&#x4F20;&#x6E38;&#x620F;&#xFF0C;&#x751F;&#x6210;&#x767D;&#x540D;&#x5355;key.txt<pre><code>  python upload.py
+  php ../QYS/src/QYS/QYS.php -k
+</code></pre></li>
+<li>5&#x3001;&#x8FDB;niuniu&#x6E38;&#x620F;&#x5185;&#xFF0C;&#x751F;&#x6210;key.txt&#x6587;&#x4EF6; &#xFF08;vim key.txt&#xFF09;<pre><code>  &#x7C98;&#x8D34;&#x4EA4;&#x6362;&#x6765;&#x7684;&#x4E32;
+</code></pre></li>
+<li><p>6&#x3001;&#x5B89;&#x88C5;beanstalked</p>
+<pre><code>  ubuntu
+  beanstalkd
+
+  apt install beanstalkd
+  beanstalkd -v
+
+  &#x542F;&#x52A8;
+  cd /etc/init.d/
+  ./beanstalkd start
+  ./beanstalkd restart
+
+  ps -ax|grep bean
+
+  &#x6570;&#x636E;&#x5B58;&#x653E;&#x8DEF;&#x5F84; &#x5173;&#x95ED;&#x540E;&#x6E05;&#x9664;&#x518D;&#x5F00;&#x542F;
+  cd /var/lib/beanstalkd
+  rm
+  cd /etc/init.d/
+  ./beanstalkd stop
+
+  cd /etc/default/
+  vim beanstalkd
+  &#x6700;&#x540E;&#x4E00;&#x884C;&#x6CE8;&#x91CA; &#x53EA;&#x5B58;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x91CD;&#x542F;&#x540E;&#x6570;&#x636E;&#x6D88;&#x5931;
+  &#x6700;&#x540E;&#x4E00;&#x884C;&#x5F00;&#x542F;&#xFF0C;&#x5B58;&#x786C;&#x76D8;&#x548C;&#x5185;&#x5B58;&#xFF0C;&#x91CD;&#x542F;&#x540E;&#x6570;&#x636E;&#x8FD8;&#x5728;
+</code></pre></li>
+<li>7&#x3001;&#x542F;&#x52A8;&#x6E38;&#x620F; <pre><code>  mysql -u root -p
+  create database kuailuoniu;
+  show databases;
+  php ../../QYS/src/QYS/QYS.php -p `pwd` -c conf/prod.php
+</code></pre></li>
+<li>8&#x3001;&#x542F;&#x52A8;skynet<pre><code>  /home/ubuntu/skynet# ./skynet ../conf/config
+</code></pre></li>
+</ul>
 
                                 
                                 </section>
@@ -246,7 +287,7 @@
 
             
                 
-                <a href="CLIENT.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: （三）客户端要求">
+                <a href="database.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: （二）装载数据库">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -258,7 +299,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"（四）奖惩机制","level":"1.2.4","depth":2,"previous":{"title":"（三）客户端要求","level":"1.2.3","depth":2,"path":"chapter01/CLIENT.md","ref":"chapter01/CLIENT.md","articles":[]},"dir":"ltr"},"config":{"plugins":["sharing","splitter","expandable-chapters-small","-anchors","-github","-github-buttons","-donate","-sharing-plus","-anchor-navigation-ex","-favicon","livereload"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Porsche","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Blankj's Glory","language":"zh-hans","links":{"sidebar":{}},"gitbook":"3.2.3","description":"select * from learn"},"file":{"path":"chapter01/REWARD.md","mtime":"2019-05-29T13:31:42.371Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-29T14:43:23.741Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"（三）安装swoole","level":"1.2.3","depth":2,"previous":{"title":"（二）装载数据库","level":"1.2.2","depth":2,"path":"chapter01/database.md","ref":"chapter01/database.md","articles":[]},"dir":"ltr"},"config":{"plugins":["sharing","splitter","expandable-chapters-small","-anchors","-github","-github-buttons","-donate","-sharing-plus","-anchor-navigation-ex","-favicon"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Porsche","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Blankj's Glory","language":"zh-hans","links":{"sidebar":{}},"gitbook":"3.2.3","description":"select * from learn"},"file":{"path":"chapter01/frame.md","mtime":"2019-06-27T06:57:32.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-27T10:17:54.101Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -277,10 +318,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
