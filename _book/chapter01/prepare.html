@@ -1,0 +1,353 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>（一）修改服务器内核配置 · Blankj's Glory</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Porsche">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="database.html" />
+    
+    
+    <link rel="prev" href="../MAIN.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    文档介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../MAIN.html">
+            
+                <a href="../MAIN.html">
+            
+                    
+                    主要内容
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    （一）修改服务器内核配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="database.html">
+            
+                <a href="database.html">
+            
+                    
+                    （二）装载数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="frame.html">
+            
+                <a href="frame.html">
+            
+                    
+                    （三）安装swoole
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >（一）修改服务器内核配置</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5185;&#x6838;&#x53C2;&#x6570;&#x8C03;&#x6574;">&#x5185;&#x6838;&#x53C2;&#x6570;&#x8C03;&#x6574;</h1>
+<hr>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5; <a href="https://wiki.swoole.com/wiki/page/p-server/sysctl.html" target="_blank">https://wiki.swoole.com/wiki/page/p-server/sysctl.html</a></p>
+<ul>
+<li><p>1&#x3001;ssh root@39.97.238.246 &#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x5668;</p>
+</li>
+<li><p>2&#x3001; ulimit -n 100000 &#x5148;&#x624B;&#x52A8;&#x4FEE;&#x6539;&#x53C2;&#x6570;</p>
+</li>
+<li><p>3&#x3001;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<pre><code>  vim /etc/security/limits.conf 
+  &#x7C98;&#x8D34;&#x4EE5;&#x4E0B;&#xFF1A;
+
+  * soft nofile 262140
+  * hard nofile 262140
+  root soft nofile 262140
+  root hard nofile 262140
+  * soft core unlimited
+  * hard core unlimited
+  root soft core unlimited
+  root hard core unlimited
+</code></pre></li>
+<li><p>4&#x3001;&#x91CD;&#x542F;&#x670D;&#x52A1;&#x5668;</p>
+<pre><code>  shutdown -r now 
+</code></pre></li>
+<li><p>5&#x3001;&#x4FEE;&#x6539;&#x5185;&#x6838;&#x53C2;&#x6570;</p>
+<pre><code>  vim /etc/sysctl.conf
+  &#x590D;&#x5236;&#x4EE5;&#x4E0B;key-value&#x7C98;&#x8D34;&#xFF1A;
+
+  net.unix.max_dgram_qlen = 100
+  net.ipv4.tcp_mem  =   379008       505344  758016
+  net.ipv4.tcp_wmem = 4096        16384   4194304
+  net.ipv4.tcp_rmem = 4096          87380   4194304
+  net.core.wmem_default = 8388608
+  net.core.rmem_default = 8388608
+  net.core.rmem_max = 16777216
+  net.core.wmem_max = 16777216
+  kernel.msgmnb = 4203520
+  kernel.msgmni = 64
+  kernel.msgmax = 8192
+  sysctl -w net.local.dgram.maxdgram=8192
+  sysctl -w net.local.dgram.recvspace=200000
+  kernel.core_pattern = /data/core_files/core-%e-%p-%t
+  net.ipv4.tcp_syncookies=1
+  net.ipv4.tcp_max_syn_backlog=81920
+  net.ipv4.tcp_synack_retries=3
+  net.ipv4.tcp_syn_retries=3
+  net.ipv4.tcp_fin_timeout = 30
+  net.ipv4.tcp_keepalive_time = 300
+  net.ipv4.tcp_tw_reuse = 1
+  net.ipv4.tcp_tw_recycle = 1
+  net.ipv4.ip_local_port_range = 20000 65000
+  net.ipv4.tcp_max_tw_buckets = 200000
+  net.ipv4.route.max_size = 5242880
+</code></pre></li>
+<li><p>6&#x3001;&#x4FEE;&#x6539;&#x4FDD;&#x5B58;&#x540E;&#x8C03;&#x7528;sysctl -p&#x52A0;&#x8F7D;&#x65B0;&#x914D;&#x7F6E;</p>
+<pre><code>  sysctl -p  
+</code></pre></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../MAIN.html" class="navigation navigation-prev " aria-label="Previous page: 主要内容">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="database.html" class="navigation navigation-next " aria-label="Next page: （二）装载数据库">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"（一）修改服务器内核配置","level":"1.2.1","depth":2,"next":{"title":"（二）装载数据库","level":"1.2.2","depth":2,"path":"chapter01/database.md","ref":"chapter01/database.md","articles":[]},"previous":{"title":"主要内容","level":"1.2","depth":1,"path":"MAIN.md","ref":"MAIN.md","articles":[{"title":"（一）修改服务器内核配置","level":"1.2.1","depth":2,"path":"chapter01/prepare.md","ref":"chapter01/prepare.md","articles":[]},{"title":"（二）装载数据库","level":"1.2.2","depth":2,"path":"chapter01/database.md","ref":"chapter01/database.md","articles":[]},{"title":"（三）安装swoole","level":"1.2.3","depth":2,"path":"chapter01/frame.md","ref":"chapter01/frame.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["sharing","splitter","expandable-chapters-small","-anchors","-github","-github-buttons","-donate","-sharing-plus","-anchor-navigation-ex","-favicon"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Porsche","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Blankj's Glory","language":"zh-hans","links":{"sidebar":{}},"gitbook":"3.2.3","description":"select * from learn"},"file":{"path":"chapter01/prepare.md","mtime":"2019-06-24T09:48:37.568Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-27T10:49:35.350Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
